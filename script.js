@@ -34,10 +34,14 @@ function desenhaComida() {
 }
 
 function criarPlacar() {
-        context.font = '20px "Trebuchet MS"';
-        context.textAlign = "right";
-        context.fillStyle = "white";
-        context.fillText(`Score: ${index} - Best Score: ${localStorage.getItem('best_score')}`, canvas.width - 35, 35);
+    if(localStorage.getItem('best_score') == null) {
+        localStorage.setItem('best_score', index);
+    }
+    
+    context.font = '20px "Trebuchet MS"';
+    context.textAlign = "right";
+    context.fillStyle = "white";
+    context.fillText(`Score: ${index} - Best Score: ${localStorage.getItem('best_score')}`, canvas.width - 35, 35);
 }
 
 document.addEventListener('keydown', update);
